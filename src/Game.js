@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Button, Segment } from 'semantic-ui-react'
 import './App.css'
 
 const App = () => {
@@ -8,7 +8,7 @@ const App = () => {
   const [userPoints, setUserPoints] = useState(0)
   const [computerPoints, setComputerPoints] = useState(0)
   const [turnResult, setTurnResult] = useState(null)
-  const [result, setResult] = useState('Let\'s see who wins')
+  const [result, setResult] = useState("")
   const [gameOver, setGameOver] = useState(false)
   const choices = ['rock', 'paper', 'scissors']
 
@@ -79,21 +79,21 @@ const App = () => {
       
       <div className='Options'>
         {choices.map((choice, index) =>
-          <Button.Group>
-            <Button inverted color='black'
+          
+            <Button inverted color='green'
               key={index} 
               onClick={() => handleClick(choice)} 
               disabled={gameOver}>
               {choice} 
             </Button>
-          </Button.Group>
+          
         )}
       </div>
       
       <div className='result'>
         <h1 hidden={gameOver}>Turn Result: {turnResult}</h1>
         <div>
-          <h1>Final Result: {result}</h1>
+          <h1 hidden={gameOver==false}>Final Result: {result}</h1>
         </div>
       </div>
       
